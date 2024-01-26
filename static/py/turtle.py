@@ -43,28 +43,15 @@ turtle.set_defaults(
 editor.setOption("firstLineNumber", len(PREFIX.split('\n')))
 
 EXAMPLE = """# Turtle script example
-t = turtle.Turtle('turtle')
+from turtle import *
 
-t.width(5)
+forward(100)
 
-t.color('red')
-
-for _ in range(4):
-    t.forward(100)
-    t.left(90)
-
-t.penup()
-
-t.goto(-80, 150)
-t.color('green')
-
-message = "Welcome to Python and Turtle!"
-
-t.write(message, font=("Arial", 20, "normal"))
-
-print(message)
-
-turtle.done()
+# Wichtig!
+# --------
+# Um die Zeichnung zu sehen, müssen Sie am Ende jedes Turtle
+# Programmes done() aufrufen.
+done()
 """
 
 info = sys.implementation.version
@@ -129,15 +116,19 @@ def end_progress():
 @document['run'].bind('click')
 def run(*args):
     start_progress()
-    clear_output()
+    clear()
     timer.set_timeout(exec_code, 50)
 
-@document['clear'].bind('click')
-def clear_output(*args):
+# new function that clears the output areas
+def clear():
     from turtle import restart
     restart()
     document[PRINT_OUTPUT].value = ''
     document[PRINT_OUTPUT].style = {"color": ""}
+
+@document['clear'].bind('click')
+def clear_output(*args):
+    clear()
 
 def update_theme(theme):
     editor.setTheme(theme)

@@ -13,8 +13,28 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.36.0/theme/lesser-dark.min.css" integrity="sha256-Wuunor/eYqtA0Arnd0/W7M4uy08DwZW49gIkqdj5eO4=" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.36.0/theme/solarized.min.css" integrity="sha256-v5CcBJnFb3uNFDq7uhR4sIS7yihsXlBxN+cwxjtzp7c=" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
-    <link rel="stylesheet" href="static/css/editor.css" />
     <link rel="stylesheet" href="static/css/main.css" />
+    <link rel="stylesheet" href="static/css/brython.css" />
+
+        <style>
+    .codearea {
+        background-color:#000;
+        color:#fff;
+        font-family:'Oxygen Mono', Consolas, 'Liberation Mono', 'DejaVu Sans Mono', monospace;
+        font-size:14px;
+        overflow:auto;
+        width: 120ch;
+        height: 55ch;
+        margin-left: 2%;
+    }
+    pre {
+        padding: 2px;
+        border: 0;
+        color: #fff;
+        background-color:#000;
+}
+
+    </style>
   </head>
 
   <body onload=brython()>
@@ -28,67 +48,25 @@
             <a href="index.html">Editor</a>
           </li>
           <li>
-            <a href="turtle">Turtle</a>
+            <a href="turtle.html">Turtle</a>
           </li>
           <li>
-            <a href="shell">Shell</a>
-            <li>
-              <a uk-toggle="target: #modal-about" href="shell#">About</a>
-            </li>
+            <a href="shell.html">Shell</a>
+          </li>
         </ul>
       </div>
     </nav>
   
+    <!--
 <div class="uk-button-group">
   <button class="uk-button uk-button-default" uk-tooltip="title: Reset Shell;delay: 300" id="reset">Reset</button>
 </div>
-<div class="container ">
-  <textarea id="code" class="codearea" rows="50"></textarea>
-</div>
+    -->
 
-      <div id="modal-about" uk-modal>
-        <div class="uk-modal-dialog">
-            <button class="uk-modal-close-default" type="button" uk-close></button>
-            <div class="uk-modal-header">
-                <h2 class="uk-modal-title">About Python &amp; Turtle</h2>
-            </div>
-            <div class="uk-modal-body">
-                <h3>Python &amp; Turtle</h3>
-                <p>
-                    <ul>
-                        <li>Version 0.4.1</li>
-                        <li>Copyright &copy; 2018 <a target="_blank" href="https://www.burgaud.com">Andre Burgaud</a></li>
-                    </ul>
-                </p>
-                <h3>What is Python &amp; Turtle?</h3>
-                <p><b>Python &amp; Turtle</b> is a Python playground allowing to interact with the <a target="_blank" href="https://www.python.org/">Python programming language</a> within your browser. It is intended to be used as a teaching and/or learning tool. It offers three environments:
-                    <ol>
-                        <li>A <b>Python editor</b> with an output pane (text base),</li>
-                        <li>An environment allowing to interact with the <b>Python Turtle</b> module (graphical base),</li>
-                        <li>A classic <b>Python interpreter</b> (a.k.a. REPL or shell).</li>
-                    </ol>
-                </p>
-                <h3>Licenses</h3>
-                <p><b>Python &amp; Turtle</b> relies on several open source projects. Those projects are listed below with their respective licenses:
-                    <ul>
-                        <li><a target="_blank" href="http://brython.info">Brython</a> (MIT License)</li>
-                        <li><a target="_blank" href="https://github.com/nathancahill/Split.js">Split.js</a> (MIT License)</li>
-                        <li><a target="_blank" href="https://getuikit.com/">UIKit</a> (MIT License)</li>
-                        <li><a target="_blank" href="https://jquery.com/">jQuery</a> (MIT License)</li>
-                        <li><a target="_blank" href="https://gasparesganga.com/labs/jquery-loading-overlay/">jQuery LoadingOverlay</a> (MIT License)</li>
-                        <li><a target="_blank" href="https://ace.c9.io/">Ace Editor</a> (BSD License)</li>
-                        <li><a target="_blank" href="https://fontawesome.com/">Font Awesome</a> (Icons: CC BY 4.0 License, Fonts: SIL OFL 1.1 License, Code: MIT License)</li>
-                    </ul>
-                </p>
-                <h3>Credits</h3>
-                <p>In addition to the open source libraries used to power this web site, some code (e.g. Python Shell), was directly adapted from the <a target="_blank" href="https://github.com/brython-dev/brython">Brython Project</a> (code available under an MIT license). Big thanks to <a target="_blank" href="https://brythonista.wordpress.com/">Pierre Quentel</a> and other Brython contributors for their outstanding work on <a target="_blank" href="http://brython.info">Brython</a>.</p>
-            </div>
-            <div class="uk-modal-footer uk-text-right">
-                <button class="uk-button uk-button-primary uk-modal-close" type="button">Cancel</button>
-            </div>
-        </div>
-    </div>
-  
+    <div id="code" class="codearea" contenteditable></div>
+
+    <div id="content"></div>
+
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.0/dist/loadingoverlay.min.js"></script>
@@ -107,7 +85,12 @@
     <script type="text/javascript" src="static/js/brython.js"></script>
     <script type="text/javascript" src="static/js/brython_stdlib.js"></script>
   
-<script type="text/python3" src="static/py/shell.py" id="__main__"></script>
+<script type="text/python3">
+     from interpreter import Interpreter
+
+     # Start an interactive interpreter in textarea with id "code"
+     Interpreter("code")
+</script>
 
   </body>
 </html>

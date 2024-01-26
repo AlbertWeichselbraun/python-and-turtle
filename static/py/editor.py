@@ -97,13 +97,17 @@ def end_progress():
 @document['run'].bind('click')
 def run(*args):
     start_progress()
-    clear_output()
+    clear()
     timer.set_timeout(exec_code, 50)
+
+# new function
+def clear():
+    document[PRINT_OUTPUT].value = ''
+    document[PRINT_OUTPUT].style = {"color": ""}
 
 @document['clear'].bind('click')
 def clear_output(*args):
-    document[PRINT_OUTPUT].value = ''
-    document[PRINT_OUTPUT].style = {"color": ""}
+    clear()
 
 def update_theme_button(theme):
     editor.setTheme(theme)
