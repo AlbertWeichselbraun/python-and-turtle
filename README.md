@@ -1,21 +1,11 @@
 # Overview
 
-Source code for web site https://pythonandturtle.com
+Python repl based on work by Andre Burgaud and the Brython Python implementation.
 
-# Update gcloud
+Original: see  https://pythonandturtle.com
 
-```
-$ gcloud components update
-```
 
-# Running Server
+# Components:
 
-```
-$ dev_appserver.py --log_level debug app.yaml
-```
+- Brython
 
-# Deploying Server
-
-```
-$ gcloud app deploy pythonandturtle/app.yaml --project=pythonandturtle
-```
