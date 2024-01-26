@@ -1,0 +1,25 @@
+@charset 'utf-8';
+
+.codearea {
+        background-color:#000;
+        color:#fff;
+        font-family:'Oxygen Mono', Consolas, 'Liberation Mono', 'DejaVu Sans Mono', monospace;
+        font-size:14px;
+        overflow:auto;
+        width: 120ch;
+        height: 55ch;
+        margin-left: 2%;
+}
+
+pre {
+    font-family: Consolas;
+        padding: 2px;
+        border: 0;
+        color: #fff;
+        background-color:#000;
+}
+
+pre.marked {
+  color:var(--dark-3);
+  font-size: 12px;
+}
